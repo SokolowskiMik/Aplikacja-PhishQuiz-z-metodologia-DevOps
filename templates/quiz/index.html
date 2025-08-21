@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Strona Główna - PhishQuiz{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 text-center shadow-sm">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Witaj w PhishQuiz!</h1>
+        <p class="fs-4">Sprawdź swoją wiedzę i naucz się rozpoznawać próby phishingu w bezpiecznym środowisku.</p>
+        <p>Gotowy podjąć wyzwanie i stać się mistrzem cyberbezpieczeństwa?</p>
+        <a class="btn btn-primary btn-lg mt-3" href="{% url 'quiz-page' %}" role="button">
+            Rozpocznij Quiz &raquo;
+        </a>
+    </div>
+</div>
+{% endblock %}

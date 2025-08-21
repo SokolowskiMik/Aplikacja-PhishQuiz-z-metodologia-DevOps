@@ -1,0 +1,13 @@
+# Framework i narzędzia Django
+asgiref
+django
+django-htmx
+gunicorn
+sqlparse
+tzdata
+
+# Baza danych PostgreSQL
+psycopg2-binary
+
+# Narzędzia deweloperskie i zmienne środowiskowe
+python-decouple

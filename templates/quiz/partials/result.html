@@ -1,0 +1,24 @@
+<div id="quiz-container"> 
+    {% if is_correct %}
+        <div class="alert alert-success">
+            <h4 class="alert-heading">✅ Dobra robota!</h4>
+            <p>To jest poprawna odpowiedź. Świetnie sobie radzisz!</p>
+        </div>
+    {% else %}
+        <div class="alert alert-danger">
+            <h4 class="alert-heading">❌ Uwaga!</h4>
+            <p class="mb-0">Wybrany link był fałszywy. Prawdziwy adres to:</p>
+            <strong class="d-block mt-2" style="word-break: break-all;">{{ correct_answer }}</strong>
+        </div>
+    {% endif %}
+
+    <div class="mt-4 text-center">
+        <button 
+            class="btn btn-success btn-lg" 
+            hx-get="{% url 'quiz-page' %}" 
+            hx-target="#quiz-wrapper" hx-swap="innerHTML"
+            hx-indicator="#quiz-wrapper" >
+            Następne pytanie &rarr;
+        </button>
+    </div>
+</div>

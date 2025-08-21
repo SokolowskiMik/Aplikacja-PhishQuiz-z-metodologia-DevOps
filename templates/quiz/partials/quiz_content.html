@@ -1,0 +1,19 @@
+<div id="quiz-container">
+    <h2 class="card-title">Wybierz, który link jest prawdziwy:</h2>
+
+    <form class="links-container d-grid gap-2 mt-3">
+        {% csrf_token %}
+        {% for link in links %}
+            <button 
+                class="btn btn-primary"
+                hx-post="{% url 'check-answer' %}" 
+                hx-target="#quiz-container" hx-swap="innerHTML"
+                name="selected_link"
+                value="{{ link }}"
+                >
+                {{ link }}
+            </button>
+        {% endfor %}
+        <input type="hidden" name="question_id" value="{{ question_id }}">
+    </form>
+</div>

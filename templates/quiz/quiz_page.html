@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz - PhishQuiz{% endblock %}
+
+{% block content %}
+<div class="container quiz-container text-center p-4 bg-white rounded shadow" style="max-width: 800px; margin: auto;">
+    
+    <div id="quiz-wrapper">
+        {% if error %}
+            <div class="alert alert-warning">{{ error }}</div>
+        {% else %}
+            {% include 'quiz/partials/quiz_content.html' %}
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

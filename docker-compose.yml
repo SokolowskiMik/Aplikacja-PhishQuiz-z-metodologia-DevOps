@@ -1,0 +1,13 @@
+services:
+  web:
+    # Buduje obraz z Dockerfile w bieżącym folderze
+    build: .
+    # Komenda do uruchomienia serwera deweloperskiego (do lokalnego developmentu)
+    command: python manage.py runserver 0.0.0.0:8000
+    # Mapuje folder z kodem z Twojego komputera do kontenera,
+    # dzięki czemu zmiany w kodzie są od razu widoczne
+    volumes:
+      - .:/app
+    # Mapuje port 8000 z kontenera na port 8000 na Twoim komputerze
+    ports:
+      - "8000:8000"
