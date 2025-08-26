@@ -7,6 +7,9 @@ import random
 def index_view(request):
     return render(request, 'quiz/index.html')
 
+def learn_more_view(request):
+    return render(request, 'quiz/learn_more.html')
+
 def quiz_view(request):
     """
     Displays a random quiz question, avoiding the last seen question.

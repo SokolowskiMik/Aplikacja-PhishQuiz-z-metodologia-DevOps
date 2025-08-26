@@ -1,17 +1,4 @@
-# docker-compose.yml
 services:
-  # Serwis bazy danych PostgreSQL
-  db:
-    image: postgres:16-alpine
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_DB=phishquiz_db
-      - POSTGRES_USER=phishquiz_user
-      - POSTGRES_PASSWORD=phishquiz_password
-    restart: always
-
-  # Serwis aplikacji Django
   web:
     build: .
     command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000
@@ -20,17 +7,10 @@ services:
       - static_volume:/app/staticfiles
     expose:
       - 8000
-    depends_on:
-      - db
-    environment:
-      - DB_NAME=phishquiz_db
-      - DB_USER=phishquiz_user
-      - DB_PASSWORD=phishquiz_password
-      - DB_HOST=db
-      - DB_PORT=5432
+    env_file:
+      - .env
     restart: always
 
-  # Serwis Nginx
   nginx:
     image: nginx:stable-alpine
     ports:
@@ -42,7 +22,5 @@ services:
       - web
     restart: always
 
-# Definicja wolumenów do przechowywania danych
 volumes:
-  postgres_data:
   static_volume:

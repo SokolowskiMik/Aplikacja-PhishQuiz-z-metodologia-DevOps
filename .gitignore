@@ -1,0 +1,25 @@
+# .gitignore
+
+# Wirtualne środowisko
+venv/
+env/
+.venv/
+
+# Pliki bazy danych
+db.sqlite3
+*.sqlite3
+
+# Pliki ze zmiennymi środowiskowymi i sekretami
+.env
+*.env
+
+# Folder ze zebranymi plikami statycznymi
+staticfiles/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Pliki IDE (np. VSCode)
+.vscode/

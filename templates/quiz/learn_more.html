@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Dowiedz się więcej - PhishQuiz{% endblock %}
+
+{% block content %}
+<div class="p-4 p-md-5 mb-4 bg-light rounded-3 shadow-sm">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold text-center">Centrum Wiedzy o Cyberbezpieczeństwie</h1>
+        <p class="fs-5 text-center col-md-10 mx-auto">Poszerz swoją wiedzę na temat phishingu i naucz się rozpoznawać zagrożenia online. Poniżej znajdziesz przydatne materiały edukacyjne.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    
+    <div class="col-lg-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title h4">Co to jest phishing? 🎣</h2>
+                <p class="card-text">Phishing to metoda oszustwa, w której cyberprzestępcy podszywają się pod zaufane instytucje (np. banki, urzędy, portale społecznościowe), aby wyłudzić Twoje poufne dane, takie jak loginy, hasła czy numery kart kredytowych.</p>
+                <h5 class="mt-4">Polecane artykuły:</h5>
+                <div class="list-group">
+                    <a href="https://www.gov.pl/web/baza-wiedzy/czym-jest-phishing-i-jak-nie-dac-sie-nabrac-na-podejrzane-widomosci-e-mail-oraz-sms-y" class="list-group-item list-group-item-action" target="_blank" rel="noopener noreferrer">
+                        Phishing oficjalny poradnik gov.pl
+                    </a>
+                    <a href="https://pl.wikipedia.org/wiki/Phishing" class="list-group-item list-group-item-action" target="_blank" rel="noopener noreferrer">
+                        Artykuły o phishingu na Wikipedii
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title h4">Jak analizować adresy URL? 🔗</h2>
+                <p class="card-text">Kluczowym elementem ochrony jest umiejętność weryfikacji adresów URL. Oszuści często stosują triki, aby link wyglądał na autentyczny, np. używając literówek lub podobnych do oryginału domen.</p>
+                <h5 class="mt-4">Jak rozpoznać fałszywy link:</h5>
+                <div class="list-group">
+                    <a href="https://cert.pl/posts/2023/03/podejrzane-linki/" class="list-group-item list-group-item-action" target="_blank" rel="noopener noreferrer">
+                        Poradnik CERT Polska o podejrzanych linkach. 
+                    </a>
+                    <a href="https://www.gov.pl/web/baza-wiedzy/phishing--widzisz-zglaszaj" class="list-group-item list-group-item-action" target="_blank" rel="noopener noreferrer">
+                        Poradnig gov.pl jak zgłosić phishing?
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
