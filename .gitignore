@@ -1,5 +1,5 @@
 # .gitignore
-
+.github
 # Wirtualne środowisko
 venv/
 env/
