@@ -1,0 +1,40 @@
+# .github/workflows/create-release.yml
+
+name: Create and Publish Release Archive
+
+# Uruchom ten workflow za każdym razem, gdy pushujesz nowy tag w formacie v*.*.* (np. v1.0.0, v1.2.3)
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    permissions:
+      # Ta permisja jest wymagana, aby akcja mogła tworzyć nowe wydania (releases) w Twoim imieniu
+      contents: write
+
+    steps:
+      # Krok 1: Pobierz kod z repozytorium
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+
+      # Krok 2: Stwórz archiwum .tar.gz z kodem aplikacji
+      - name: "Create application archive"
+        # Używamy 'git archive', ponieważ automatycznie ignoruje pliki z .gitignore (np. venv, .env, db.sqlite3)
+        # To najlepszy i najbezpieczniejszy sposób na spakowanie tylko potrzebnych plików.
+        run: git archive --format=tar.gz -o phishquiz-release.tar.gz HEAD
+
+      # Krok 3: Stwórz nowe wydanie (Release) na GitHubie i dołącz do niego nasze archiwum
+      - name: "Create GitHub Release"
+        uses: ncipollo/release-action@v1
+        with:
+          # Dołącza plik, który właśnie stworzyliśmy
+          artifacts: "phishquiz-release.tar.gz"
+          # Używa nazwy taga, który wywołał workflow (np. v1.0.1)
+          tag: ${{ github.ref_name }}
+          # Nadaje tytuł wydaniu
+          name: "Release ${{ github.ref_name }}"
+          # Opcjonalny opis wydania
+          body: "Automated release for version ${{ github.ref_name }}"
