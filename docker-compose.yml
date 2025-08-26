@@ -3,7 +3,7 @@ services:
     build: .
     command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - .:/app
+      - db_volume:/app
       - static_volume:/app/staticfiles
     expose:
       - 8000
@@ -23,4 +23,5 @@ services:
     restart: always
 
 volumes:
+  db_volume:
   static_volume:

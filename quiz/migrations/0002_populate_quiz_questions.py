@@ -8,7 +8,6 @@ import random
 # Zaktualizowana struktura danych
 # Struktura: (Kategoria, Prawdziwy URL, [Lista fałszywych URLi])
 INITIAL_QUESTIONS_DATA = [
-    # Bankowość
     ('Bankowość', 'https://www.pkobp.pl/ekf/login.html', [
         'https://www.pk0bp.pl/ekf/login.html',
         'https://www.pkobp.pI/ekf/login.html',
@@ -27,7 +26,6 @@ INITIAL_QUESTIONS_DATA = [
         'https://online.ing.рl/login',
         'https://online-ing.pl/login',
     ]),
-    # Media społecznościowe
     ('Media społecznościowe', 'https://www.facebook.com/login/', [
         'https://www.faceb00k.com/login',
         'https://www.faceḅook.com/login',
@@ -46,7 +44,6 @@ INITIAL_QUESTIONS_DATA = [
         'https://twіtter.com/login',
         'https://twitter-login.com/login',
     ]),
-    # E-commerce
     ('E-commerce', 'https://www.allegro.pl/logowanie', [
         'https://www.aIlegro.pl/logowanie',
         'https://www.alIegro.pl/logowanie',
@@ -59,7 +56,6 @@ INITIAL_QUESTIONS_DATA = [
         'https://www.amazọn.com/ap/signin',
         'https://www.amazon-account.com/ap/signin',
     ]),
-    # Usługi e-mail i inne
     ('Usługi e-mail i inne', 'https://accounts.google.com/signin', [
         'https://accounts.g00gle.com/signin',
         'https://accounts.googIe.com/signin',
@@ -72,7 +68,6 @@ INITIAL_QUESTIONS_DATA = [
         'https://login.microsoḟtonline.com',
         'https://signin-microsoft.com/common/login',
     ]),
-    # Streaming i rozrywka
     ('Streaming i rozrywka', 'https://www.netflix.com/pl/login', [
         'https://www.netfIix.com/pl/login',
         'https://www.netfl1x.com/pl/login',
@@ -90,17 +85,16 @@ INITIAL_QUESTIONS_DATA = [
 def populate_data(apps, schema_editor):
     QuizQuestion = apps.get_model('quiz', 'QuizQuestion')
 
-    # 1. ZABEZPIECZENIE: Czyści tabelę przed dodaniem danych
+    
     QuizQuestion.objects.all().delete()
     
     questions_to_create = []
-    # 2. ZMIANA: Rozpakowujemy teraz trzy wartości, w tym kategorię
+    
     for category, real_url, phishing_urls in INITIAL_QUESTIONS_DATA:
         if len(phishing_urls) >= 2:
             phishing_pair = random.sample(phishing_urls, 2)
             questions_to_create.append(
                 QuizQuestion(
-                    category=category,  # <-- 3. ZMIANA: Dodajemy kategorię
                     real_url=real_url,
                     phishing_url_1=phishing_pair[0],
                     phishing_url_2=phishing_pair[1]
